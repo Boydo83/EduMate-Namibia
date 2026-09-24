@@ -4,10 +4,1139 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EduMate Namibia | NIED Teacher Assistant</title>
-  <!-- Full app content is large. Please download the ZIP from the conversation and replace this file, or open the local version. -->
-  <script>window.location = 'https://github.com/Boydo83/EduMate-Namibia/raw/main/EduMate-Namibia.zip';</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            },
+            namibia: {
+              blue: '#0033A0',
+              green: '#009A44',
+              red: '#C8102E',
+              gold: '#FFCC00',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .sidebar-link.active { background: #e0f2fe; color: #0369a1; font-weight: 600; }
+    .content-card { transition: all 0.2s ease; }
+    .content-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1); }
+    @media print {
+      .no-print { display: none !important; }
+      .print-area { display: block !important; }
+      body { background: white; }
+    }
+  </style>
 </head>
-<body>
-  <p>Redirecting to full download... If not, download the ZIP from the repo releases or the conversation.</p>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- Mobile header -->
+  <div class="lg:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between no-print">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-namibia-blue flex items-center justify-center text-white font-bold text-sm">EN</div>
+      <span class="font-semibold text-slate-800">EduMate Namibia</span>
+    </div>
+    <button id="mobileMenuBtn" class="p-2 rounded-lg hover:bg-slate-100">
+      <i class="fas fa-bars text-xl"></i>
+    </button>
+  </div>
+
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-in-out no-print">
+      <div class="flex flex-col h-full">
+        <div class="px-5 py-5 border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-namibia-blue to-brand-600 flex items-center justify-center text-white font-bold shadow-sm">EN</div>
+            <div>
+              <div class="font-bold text-slate-900 leading-tight">EduMate</div>
+              <div class="text-xs text-slate-500">Namibia · NIED</div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+          <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Main</p>
+          <button data-view="home" class="sidebar-link active w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition">
+            <i class="fas fa-home w-5 text-center"></i> Home
+          </button>
+          <button data-view="lesson" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition">
+            <i class="fas fa-book-open w-5 text-center"></i> Lesson Plan
+          </button>
+          <button data-view="scheme" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition">
+            <i class="fas fa-calendar-alt w-5 text-center"></i> Scheme of Work
+          </button>
+          <button data-view="assessment" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition">
+            <i class="fas fa-clipboard-list w-5 text-center"></i> Assessment
+          </button>
+          <button data-view="notes" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition">
+            <i class="fas fa-sticky-note w-5 text-center"></i> Teaching Notes
+          </button>
+
+          <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2">Library</p>
+          <button data-view="generated" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition">
+            <i class="fas fa-folder-open w-5 text-center"></i> Generated
+            <span id="genCount" class="ml-auto bg-brand-100 text-brand-700 text-xs font-medium px-2 py-0.5 rounded-full">0</span>
+          </button>
+
+          <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2">Settings</p>
+          <button data-view="profile" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition">
+            <i class="fas fa-user-cog w-5 text-center"></i> Profile & School
+          </button>
+        </nav>
+
+        <div class="p-4 border-t border-slate-100">
+          <div class="flex items-center gap-3 px-2">
+            <div class="w-9 h-9 rounded-full bg-namibia-blue text-white flex items-center justify-center font-semibold text-sm" id="avatarLetter">T</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-medium text-slate-800 truncate" id="sidebarName">Teacher</div>
+              <div class="text-xs text-slate-500 truncate" id="sidebarSchool">Namibia · NIED</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/40 z-40 hidden lg:hidden no-print"></div>
+
+    <!-- Main -->
+    <main class="flex-1 pt-16 lg:pt-0 min-h-screen">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+
+        <!-- HOME -->
+        <div id="view-home" class="view">
+          <div class="mb-8">
+            <div class="flex flex-wrap items-center gap-3 mb-2">
+              <h1 class="text-2xl sm:text-3xl font-bold text-slate-900">Welcome back, <span id="welcomeName">Teacher</span>! 👋</h1>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-namibia-blue text-sm font-medium border border-blue-100">🇳🇦 Namibia</span>
+            </div>
+            <p class="text-slate-600">Continue your teaching journey with NIED-aligned resources.</p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-xl border border-slate-200 p-4">
+              <div class="text-2xl font-bold text-slate-900" id="statLesson">0</div>
+              <div class="text-sm text-slate-500">Lesson Plans</div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 p-4">
+              <div class="text-2xl font-bold text-slate-900" id="statScheme">0</div>
+              <div class="text-sm text-slate-500">Schemes of Work</div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 p-4">
+              <div class="text-2xl font-bold text-slate-900" id="statAssess">0</div>
+              <div class="text-sm text-slate-500">Assessments</div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 p-4">
+              <div class="text-2xl font-bold text-slate-900" id="statNotes">0</div>
+              <div class="text-sm text-slate-500">Teaching Notes</div>
+            </div>
+          </div>
+
+          <h2 class="text-lg font-semibold text-slate-800 mb-4">Quick actions</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <button data-goto="lesson" class="content-card bg-white rounded-xl border border-slate-200 p-5 text-left hover:border-brand-300 group">
+              <div class="w-11 h-11 rounded-lg bg-blue-50 text-brand-600 flex items-center justify-center mb-3 group-hover:bg-brand-100 transition"><i class="fas fa-book-open text-lg"></i></div>
+              <div class="font-semibold text-slate-900">Lesson Plan</div>
+              <div class="text-sm text-slate-500 mt-1">NIED-aligned daily / weekly plans</div>
+            </button>
+            <button data-goto="scheme" class="content-card bg-white rounded-xl border border-slate-200 p-5 text-left hover:border-brand-300 group">
+              <div class="w-11 h-11 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3 group-hover:bg-emerald-100 transition"><i class="fas fa-calendar-alt text-lg"></i></div>
+              <div class="font-semibold text-slate-900">Scheme of Work</div>
+              <div class="text-sm text-slate-500 mt-1">Term / yearly planning</div>
+            </button>
+            <button data-goto="assessment" class="content-card bg-white rounded-xl border border-slate-200 p-5 text-left hover:border-brand-300 group">
+              <div class="w-11 h-11 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mb-3 group-hover:bg-amber-100 transition"><i class="fas fa-clipboard-list text-lg"></i></div>
+              <div class="font-semibold text-slate-900">Assessment</div>
+              <div class="text-sm text-slate-500 mt-1">Tests, quizzes & marking schemes</div>
+            </button>
+            <button data-goto="notes" class="content-card bg-white rounded-xl border border-slate-200 p-5 text-left hover:border-brand-300 group">
+              <div class="w-11 h-11 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center mb-3 group-hover:bg-violet-100 transition"><i class="fas fa-sticky-note text-lg"></i></div>
+              <div class="font-semibold text-slate-900">Teaching Notes</div>
+              <div class="text-sm text-slate-500 mt-1">Learner & teacher notes</div>
+            </button>
+          </div>
+
+          <div class="mt-8 bg-gradient-to-r from-namibia-blue to-brand-700 rounded-xl p-5 text-white">
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">🇳🇦</div>
+              <div>
+                <h3 class="font-semibold text-lg">Namibian Curriculum (NIED)</h3>
+                <p class="text-blue-100 text-sm mt-1">All materials follow the National Institute for Educational Development framework — Junior Primary, Senior Primary, Junior Secondary and Senior Secondary. Basic competencies, learner-centred approaches and continuous assessment are built in.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFILE -->
+        <div id="view-profile" class="view hidden">
+          <div class="mb-6">
+            <h1 class="text-2xl font-bold text-slate-900">Profile & School</h1>
+            <p class="text-slate-600 mt-1">Your name and school appear on every generated document.</p>
+          </div>
+          <div class="bg-white rounded-xl border border-slate-200 p-6 max-w-lg">
+            <form id="form-profile" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Your full name</label>
+                <input name="teacherName" id="inputName" type="text" placeholder="e.g. Ms. Angello" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">School name</label>
+                <input name="schoolName" id="inputSchool" type="text" placeholder="e.g. Windhoek High School" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Region (optional)</label>
+                <input name="region" id="inputRegion" type="text" placeholder="e.g. Khomas" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+              </div>
+              <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 rounded-lg transition">
+                <i class="fas fa-save mr-2"></i> Save Profile
+              </button>
+            </form>
+            <p id="profileSaved" class="mt-3 text-sm text-emerald-600 hidden"><i class="fas fa-check-circle mr-1"></i> Profile saved successfully.</p>
+          </div>
+        </div>
+
+        <!-- LESSON PLAN -->
+        <div id="view-lesson" class="view hidden">
+          <div class="mb-6">
+            <h1 class="text-2xl font-bold text-slate-900">Lesson Plan Generator</h1>
+            <p class="text-slate-600 mt-1">Create NIED-aligned lesson plans with objectives, basic competencies, activities and assessment.</p>
+          </div>
+          <div class="grid lg:grid-cols-5 gap-6">
+            <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5">
+              <form id="form-lesson" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Phase / Grade</label>
+                  <select name="grade" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+                    <option value="">Select grade…</option>
+                    <optgroup label="Junior Primary">
+                      <option>Pre-Primary</option><option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+                    </optgroup>
+                    <optgroup label="Senior Primary">
+                      <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option>
+                    </optgroup>
+                    <optgroup label="Junior Secondary">
+                      <option>Grade 8</option><option>Grade 9</option>
+                    </optgroup>
+                    <optgroup label="Senior Secondary">
+                      <option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                  <select name="subject" required class="subject-select w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500"></select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Topic / Theme</label>
+                  <input name="topic" type="text" required placeholder="e.g. Reading Comprehension: Short Stories" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Term</label>
+                    <select name="term" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+                      <option>Term 1</option><option>Term 2</option><option>Term 3</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Duration</label>
+                    <select name="duration" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+                      <option>40 minutes</option><option>45 minutes</option><option>60 minutes</option><option>80 minutes (double)</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Week</label>
+                  <input name="week" type="text" placeholder="e.g. Week 3" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
+                </div>
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                  <i class="fas fa-magic"></i> Generate Lesson Plan
+                </button>
+              </form>
+            </div>
+            <div class="lg:col-span-3">
+              <div id="result-lesson" class="bg-white rounded-xl border border-slate-200 p-6 min-h-[420px]">
+                <div class="text-center text-slate-400 py-16">
+                  <i class="fas fa-book-open text-4xl mb-3 opacity-50"></i>
+                  <p>Fill in the form and click Generate to create your NIED lesson plan.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCHEME OF WORK -->
+        <div id="view-scheme" class="view hidden">
+          <div class="mb-6">
+            <h1 class="text-2xl font-bold text-slate-900">Scheme of Work Generator</h1>
+            <p class="text-slate-600 mt-1">Plan a full term or year with topics, objectives, methods and resources aligned to NIED syllabuses.</p>
+          </div>
+          <div class="grid lg:grid-cols-5 gap-6">
+            <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5">
+              <form id="form-scheme" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Phase / Grade</label>
+                  <select name="grade" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+                    <option value="">Select grade…</option>
+                    <optgroup label="Junior Primary">
+                      <option>Pre-Primary</option><option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+                    </optgroup>
+                    <optgroup label="Senior Primary">
+                      <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option>
+                    </optgroup>
+                    <optgroup label="Junior Secondary">
+                      <option>Grade 8</option><option>Grade 9</option>
+                    </optgroup>
+                    <optgroup label="Senior Secondary">
+                      <option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                  <select name="subject" required class="subject-select w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500"></select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Term / Period</label>
+                  <select name="term" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+                    <option>Term 1</option><option>Term 2</option><option>Term 3</option><option>Full Year</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Focus Topics (optional)</label>
+                  <textarea name="topics" rows="3" placeholder="Leave blank for full syllabus coverage, or list specific topics (one per line)…" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                  <i class="fas fa-magic"></i> Generate Scheme of Work
+                </button>
+              </form>
+            </div>
+            <div class="lg:col-span-3">
+              <div id="result-scheme" class="bg-white rounded-xl border border-slate-200 p-6 min-h-[420px]">
+                <div class="text-center text-slate-400 py-16">
+                  <i class="fas fa-calendar-alt text-4xl mb-3 opacity-50"></i>
+                  <p>Fill in the form and click Generate to create your scheme of work.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ASSESSMENT -->
+        <div id="view-assessment" class="view hidden">
+          <div class="mb-6">
+            <h1 class="text-2xl font-bold text-slate-900">Assessment Generator</h1>
+            <p class="text-slate-600 mt-1">Create class tests, quizzes, continuous assessment tasks and marking schemes aligned to NIED.</p>
+          </div>
+          <div class="grid lg:grid-cols-5 gap-6">
+            <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5">
+              <form id="form-assessment" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Phase / Grade</label>
+                  <select name="grade" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+                    <option value="">Select grade…</option>
+                    <optgroup label="Junior Primary">
+                      <option>Pre-Primary</option><option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+                    </optgroup>
+                    <optgroup label="Senior Primary">
+                      <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option>
+                    </optgroup>
+                    <optgroup label="Junior Secondary">
+                      <option>Grade 8</option><option>Grade 9</option>
+                    </optgroup>
+                    <optgroup label="Senior Secondary">
+                      <option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                  <select name="subject" required class="subject-select w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500"></select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Topic / Content Area</label>
+                  <input name="topic" type="text" required placeholder="e.g. Fractions, Photosynthesis, Colonial History" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Assessment Type</label>
+                  <select name="type" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+                    <option>Class Test</option>
+                    <option>Quiz</option>
+                    <option>Continuous Assessment Task</option>
+                    <option>End-of-Term Exam</option>
+                    <option>Practical / Project</option>
+                  </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Total Marks</label>
+                    <input name="marks" type="number" value="25" min="5" max="100" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Duration</label>
+                    <select name="duration" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+                      <option>20 minutes</option><option>30 minutes</option><option>40 minutes</option><option>60 minutes</option><option>90 minutes</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                  <i class="fas fa-magic"></i> Generate Assessment
+                </button>
+              </form>
+            </div>
+            <div class="lg:col-span-3">
+              <div id="result-assessment" class="bg-white rounded-xl border border-slate-200 p-6 min-h-[420px]">
+                <div class="text-center text-slate-400 py-16">
+                  <i class="fas fa-clipboard-list text-4xl mb-3 opacity-50"></i>
+                  <p>Fill in the form and click Generate to create your assessment.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TEACHING NOTES -->
+        <div id="view-notes" class="view hidden">
+          <div class="mb-6">
+            <h1 class="text-2xl font-bold text-slate-900">Teaching Notes Generator</h1>
+            <p class="text-slate-600 mt-1">Generate learner notes, teacher guides and key points aligned to NIED basic competencies.</p>
+          </div>
+          <div class="grid lg:grid-cols-5 gap-6">
+            <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5">
+              <form id="form-notes" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Phase / Grade</label>
+                  <select name="grade" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+                    <option value="">Select grade…</option>
+                    <optgroup label="Junior Primary">
+                      <option>Pre-Primary</option><option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+                    </optgroup>
+                    <optgroup label="Senior Primary">
+                      <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option>
+                    </optgroup>
+                    <optgroup label="Junior Secondary">
+                      <option>Grade 8</option><option>Grade 9</option>
+                    </optgroup>
+                    <optgroup label="Senior Secondary">
+                      <option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                  <select name="subject" required class="subject-select w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500"></select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Topic</label>
+                  <input name="topic" type="text" required placeholder="e.g. The Water Cycle, Narrative Writing" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Note Type</label>
+                  <select name="type" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+                    <option>Learner Notes</option>
+                    <option>Teacher Guide</option>
+                    <option>Key Points Summary</option>
+                    <option>Both Learner + Teacher</option>
+                  </select>
+                </div>
+                <button type="submit" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-medium py-2.5 rounded-lg transition flex items-center justify-center gap-2">
+                  <i class="fas fa-magic"></i> Generate Teaching Notes
+                </button>
+              </form>
+            </div>
+            <div class="lg:col-span-3">
+              <div id="result-notes" class="bg-white rounded-xl border border-slate-200 p-6 min-h-[420px]">
+                <div class="text-center text-slate-400 py-16">
+                  <i class="fas fa-sticky-note text-4xl mb-3 opacity-50"></i>
+                  <p>Fill in the form and click Generate to create your teaching notes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GENERATED -->
+        <div id="view-generated" class="view hidden">
+          <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h1 class="text-2xl font-bold text-slate-900">Generated Materials</h1>
+              <p class="text-slate-600 mt-1">Your saved lesson plans, schemes, assessments and notes.</p>
+            </div>
+            <button id="clearAllBtn" class="text-sm text-red-600 hover:text-red-700 font-medium px-3 py-1.5 rounded-lg hover:bg-red-50 transition">
+              <i class="fas fa-trash-alt mr-1"></i> Clear all
+            </button>
+          </div>
+          <div id="generatedList" class="space-y-3">
+            <div class="text-center text-slate-400 py-16 bg-white rounded-xl border border-slate-200">
+              <i class="fas fa-folder-open text-4xl mb-3 opacity-50"></i>
+              <p>No materials generated yet. Start by creating a lesson plan or scheme of work.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // ========== SUBJECTS (expanded) ==========
+    const SUBJECTS = [
+      "English Second Language",
+      "English First Language",
+      "Afrikaans First Language",
+      "Afrikaans Second Language",
+      "Oshikwanyama First Language",
+      "Oshindonga First Language",
+      "Otjiherero First Language",
+      "Khoekhoegowab First Language",
+      "Rukwangali First Language",
+      "Silozi First Language",
+      "Mathematics",
+      "Natural Science and Health Education",
+      "Life Science",
+      "Physical Science",
+      "Physical Sciences",
+      "Social Studies",
+      "Geography",
+      "History",
+      "Life Skills",
+      "Religious and Moral Education",
+      "Information and Communication",
+      "Computer Science",
+      "Arts",
+      "Visual Arts",
+      "Physical Education",
+      "Environmental Studies",
+      "Agricultural Science",
+      "Accounting",
+      "Entrepreneurship",
+      "Business Studies",
+      "Home Economics",
+      "Design and Technology",
+      "Office Practice",
+      "Technical Drawing"
+    ];
+
+    // Populate subject selects
+    document.querySelectorAll('.subject-select').forEach(sel => {
+      sel.innerHTML = '<option value="">Select subject…</option>' +
+        SUBJECTS.map(s => `<option>${s}</option>`).join('');
+    });
+
+    // ========== PROFILE ==========
+    const profile = JSON.parse(localStorage.getItem('edumate_namibia_profile') || '{}');
+
+    function applyProfile() {
+      const name = profile.teacherName || 'Teacher';
+      const school = profile.schoolName || 'Namibia · NIED';
+      document.getElementById('welcomeName').textContent = name.split(' ')[0] || name;
+      document.getElementById('sidebarName').textContent = name;
+      document.getElementById('sidebarSchool').textContent = school;
+      document.getElementById('avatarLetter').textContent = (name[0] || 'T').toUpperCase();
+      document.getElementById('inputName').value = profile.teacherName || '';
+      document.getElementById('inputSchool').value = profile.schoolName || '';
+      document.getElementById('inputRegion').value = profile.region || '';
+    }
+    applyProfile();
+
+    document.getElementById('form-profile').addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      profile.teacherName = fd.get('teacherName')?.trim() || 'Teacher';
+      profile.schoolName = fd.get('schoolName')?.trim() || '';
+      profile.region = fd.get('region')?.trim() || '';
+      localStorage.setItem('edumate_namibia_profile', JSON.stringify(profile));
+      applyProfile();
+      const msg = document.getElementById('profileSaved');
+      msg.classList.remove('hidden');
+      setTimeout(() => msg.classList.add('hidden'), 2500);
+    });
+
+    function getHeaderInfo() {
+      const parts = [];
+      if (profile.schoolName) parts.push(profile.schoolName);
+      if (profile.region) parts.push(profile.region);
+      parts.push('Namibia');
+      return {
+        teacher: profile.teacherName || 'Teacher',
+        schoolLine: parts.join(' · ')
+      };
+    }
+
+    // ========== STATE ==========
+    const state = {
+      generated: JSON.parse(localStorage.getItem('edumate_namibia_generated') || '[]')
+    };
+
+    // ========== NAV ==========
+    const views = document.querySelectorAll('.view');
+    const links = document.querySelectorAll('.sidebar-link');
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function showView(id) {
+      views.forEach(v => v.classList.add('hidden'));
+      document.getElementById('view-' + id).classList.remove('hidden');
+      links.forEach(l => l.classList.toggle('active', l.dataset.view === id));
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    links.forEach(l => l.addEventListener('click', () => showView(l.dataset.view)));
+    document.querySelectorAll('[data-goto]').forEach(btn => {
+      btn.addEventListener('click', () => showView(btn.dataset.goto));
+    });
+    mobileBtn?.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden');
+    });
+    overlay?.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    });
+
+    // ========== HELPERS ==========
+    function saveGenerated(item) {
+      state.generated.unshift(item);
+      localStorage.setItem('edumate_namibia_generated', JSON.stringify(state.generated));
+      updateStats();
+      renderGeneratedList();
+    }
+
+    function updateStats() {
+      const counts = { lesson: 0, scheme: 0, assessment: 0, notes: 0 };
+      state.generated.forEach(g => counts[g.type] = (counts[g.type] || 0) + 1);
+      document.getElementById('statLesson').textContent = counts.lesson;
+      document.getElementById('statScheme').textContent = counts.scheme;
+      document.getElementById('statAssess').textContent = counts.assessment;
+      document.getElementById('statNotes').textContent = counts.notes;
+      document.getElementById('genCount').textContent = state.generated.length;
+    }
+
+    function renderGeneratedList() {
+      const list = document.getElementById('generatedList');
+      if (state.generated.length === 0) {
+        list.innerHTML = \`
+          <div class="text-center text-slate-400 py-16 bg-white rounded-xl border border-slate-200">
+            <i class="fas fa-folder-open text-4xl mb-3 opacity-50"></i>
+            <p>No materials generated yet. Start by creating a lesson plan or scheme of work.</p>
+          </div>\`;
+        return;
+      }
+      list.innerHTML = state.generated.map((g, i) => \`
+        <div class="bg-white rounded-xl border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white
+              \${g.type === 'lesson' ? 'bg-brand-500' : g.type === 'scheme' ? 'bg-emerald-500' : g.type === 'assessment' ? 'bg-amber-500' : 'bg-violet-500'}">
+              <i class="fas \${g.type === 'lesson' ? 'fa-book-open' : g.type === 'scheme' ? 'fa-calendar-alt' : g.type === 'assessment' ? 'fa-clipboard-list' : 'fa-sticky-note'}"></i>
+            </div>
+            <div>
+              <div class="font-medium text-slate-900">\${g.title}</div>
+              <div class="text-xs text-slate-500">\${g.meta} · \${new Date(g.date).toLocaleDateString()}</div>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="viewGenerated(\${i})" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">View</button>
+            <button onclick="downloadPdfFromSaved(\${i})" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 transition"><i class="fas fa-file-pdf mr-1"></i>PDF</button>
+            <button onclick="deleteGenerated(\${i})" class="text-sm px-3 py-1.5 rounded-lg text-red-600 hover:bg-red-50 transition">Delete</button>
+          </div>
+        </div>
+      \`).join('');
+    }
+
+    window.viewGenerated = function(i) {
+      const g = state.generated[i];
+      showView(g.type);
+      document.getElementById('result-' + g.type).innerHTML = g.html;
+    };
+
+    window.deleteGenerated = function(i) {
+      if (!confirm('Delete this item?')) return;
+      state.generated.splice(i, 1);
+      localStorage.setItem('edumate_namibia_generated', JSON.stringify(state.generated));
+      updateStats();
+      renderGeneratedList();
+    };
+
+    document.getElementById('clearAllBtn')?.addEventListener('click', () => {
+      if (!confirm('Clear all generated materials?')) return;
+      state.generated = [];
+      localStorage.setItem('edumate_namibia_generated', '[]');
+      updateStats();
+      renderGeneratedList();
+    });
+
+    // ========== PDF ==========
+    function downloadPdf(elementId, filename) {
+      const el = document.getElementById(elementId);
+      const printable = el.querySelector('.print-area') || el;
+      const opt = {
+        margin:       [10, 10, 10, 10],
+        filename:     filename || 'EduMate-Namibia.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(printable).save();
+    }
+
+    window.downloadPdfFromSaved = function(i) {
+      const g = state.generated[i];
+      let temp = document.getElementById('pdf-temp');
+      if (!temp) {
+        temp = document.createElement('div');
+        temp.id = 'pdf-temp';
+        temp.style.position = 'absolute';
+        temp.style.left = '-9999px';
+        document.body.appendChild(temp);
+      }
+      temp.innerHTML = g.html;
+      downloadPdf('pdf-temp', g.title.replace(/[^a-z0-9]/gi, '_') + '.pdf');
+    };
+
+    window.copyResult = function(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.innerText).then(() => alert('Copied to clipboard!'));
+    };
+
+    // ========== SUBJECT-AWARE HINTS ==========
+    function getSubjectHints(subject, topic) {
+      const s = (subject || '').toLowerCase();
+      if (s.includes('math')) {
+        return {
+          materials: 'Number chart, counters, geometry instruments, calculator (where allowed), worksheets',
+          activity: 'Guided practice of calculations / problem-solving related to ' + topic + ', followed by independent exercise',
+          competency: 'Apply mathematical concepts accurately and communicate solutions clearly'
+        };
+      }
+      if (s.includes('english') || s.includes('language') || s.includes('afrikaans') || s.includes('oshi') || s.includes('otji') || s.includes('khoekhoe') || s.includes('rukwangali') || s.includes('silozi')) {
+        return {
+          materials: 'Reader / textbook, flashcards, dictionary, writing materials, visual stimuli',
+          activity: 'Reading / listening comprehension, vocabulary work, speaking or writing task on ' + topic,
+          competency: 'Communicate effectively using appropriate language structures and vocabulary'
+        };
+      }
+      if (s.includes('science') || s.includes('life science') || s.includes('physical') || s.includes('natural')) {
+        return {
+          materials: 'Textbook, diagrams, simple apparatus or models, safety equipment if practical',
+          activity: 'Observation, demonstration or simple investigation related to ' + topic + ', followed by discussion and recording',
+          competency: 'Observe, investigate and explain scientific phenomena using correct terminology'
+        };
+      }
+      if (s.includes('geography') || s.includes('history') || s.includes('social')) {
+        return {
+          materials: 'Maps, atlas, historical sources, pictures, textbook, worksheets',
+          activity: 'Map work / source analysis / discussion of ' + topic + ' with links to Namibia',
+          competency: 'Locate, interpret and explain geographic or historical information'
+        };
+      }
+      if (s.includes('life skills') || s.includes('religious')) {
+        return {
+          materials: 'Textbook, discussion prompts, role-play cards, values charts',
+          activity: 'Group discussion, role-play or reflection activity on ' + topic,
+          competency: 'Demonstrate positive values, decision-making and social skills'
+        };
+      }
+      return {
+        materials: 'Textbook, chalkboard/whiteboard, worksheets, visual aids related to ' + topic,
+        activity: 'Teacher explanation followed by learner activity (pair/group work) on ' + topic,
+        competency: 'Demonstrate understanding of key concepts and basic competencies for this topic'
+      };
+    }
+
+    // ========== GENERATORS ==========
+    function generateLessonPlan(data) {
+      const { grade, subject, topic, term, duration, week } = data;
+      const h = getHeaderInfo();
+      const hints = getSubjectHints(subject, topic);
+      const title = subject + ' — ' + grade + ' — ' + term + (week ? ', ' + week : '');
+      const html = \`
+        <div class="print-area">
+          <div class="flex items-start justify-between mb-4 no-print flex-wrap gap-2">
+            <h2 class="text-lg font-bold text-slate-900">Lesson Plan</h2>
+            <div class="flex gap-2">
+              <button onclick="downloadPdf('result-lesson', '\${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
+              <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-print mr-1"></i> Print</button>
+              <button onclick="copyResult('result-lesson')" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-copy mr-1"></i> Copy</button>
+            </div>
+          </div>
+          <div class="border border-slate-200 rounded-lg overflow-hidden text-sm">
+            <div class="bg-namibia-blue text-white px-4 py-3">
+              <div class="font-semibold">Republic of Namibia · Ministry of Education, Arts and Culture · NIED</div>
+              <div class="text-blue-100 text-xs mt-0.5">\${h.schoolLine}</div>
+            </div>
+            <div class="p-4 space-y-4 bg-white">
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div><span class="text-slate-500">Teacher:</span> <strong>\${h.teacher}</strong></div>
+                <div><span class="text-slate-500">Subject:</span> <strong>\${subject}</strong></div>
+                <div><span class="text-slate-500">Grade:</span> <strong>\${grade}</strong></div>
+                <div><span class="text-slate-500">Topic:</span> <strong>\${topic}</strong></div>
+                <div><span class="text-slate-500">Term / Week:</span> <strong>\${term}\${week ? ' · ' + week : ''}</strong></div>
+                <div><span class="text-slate-500">Duration:</span> <strong>\${duration}</strong></div>
+                <div><span class="text-slate-500">Date:</span> <strong>\${new Date().toLocaleDateString()}</strong></div>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Lesson Objectives</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-700">
+                  <li>Learners will understand and explain key concepts related to <em>\${topic}</em>.</li>
+                  <li>Learners will apply knowledge of \${topic} through practical classroom activities.</li>
+                  <li>Learners will demonstrate the basic competencies required by the NIED syllabus for this topic.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Basic Competencies (NIED)</h3>
+                <p class="text-slate-700">Learners should be able to:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-700 mt-1">
+                  <li>Identify and describe the main ideas of \${topic}.</li>
+                  <li>Use appropriate subject-specific terminology correctly.</li>
+                  <li>\${hints.competency}.</li>
+                  <li>Work cooperatively and reflect on their own learning.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Teaching & Learning Materials</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-700">
+                  <li>NIED syllabus / curriculum guide for \${subject}</li>
+                  <li>\${hints.materials}</li>
+                  <li>Chalkboard / whiteboard / projector</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Lesson Presentation</h3>
+                <div class="space-y-3">
+                  <div>
+                    <strong class="text-slate-800">1. Introduction (5–8 min)</strong>
+                    <p class="text-slate-600 mt-0.5">Greet learners. Review previous lesson. Introduce <em>\${topic}</em> with a question, story or visual stimulus linked to Namibian context to activate prior knowledge.</p>
+                  </div>
+                  <div>
+                    <strong class="text-slate-800">2. Presentation / Development (15–25 min)</strong>
+                    <p class="text-slate-600 mt-0.5">Explain core concepts of \${topic} using clear language and local examples. Use questioning, demonstration and guided discussion. Write key points on the board. Check understanding frequently.</p>
+                  </div>
+                  <div>
+                    <strong class="text-slate-800">3. Learner Activities (10–15 min)</strong>
+                    <p class="text-slate-600 mt-0.5">\${hints.activity}. Teacher monitors, supports and differentiates for learners who need extra help.</p>
+                  </div>
+                  <div>
+                    <strong class="text-slate-800">4. Conclusion & Assessment (5–8 min)</strong>
+                    <p class="text-slate-600 mt-0.5">Summarise main points. Quick oral or written check. Assign short homework if appropriate. Link to the next lesson.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Assessment</h3>
+                <p class="text-slate-700">Continuous assessment through observation, questioning and the activity task. Record progress against basic competencies. Provide constructive feedback.</p>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Homework / Extension</h3>
+                <p class="text-slate-700">A short exercise or reading related to \${topic} to reinforce learning at home or in the next period.</p>
+              </div>
+
+              <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">
+                Generated for Namibian Curriculum (NIED) · EduMate Namibia · \${new Date().toLocaleString()}
+              </div>
+            </div>
+          </div>
+        </div>\`;
+      return { title, html, meta: grade + ' · ' + subject };
+    }
+
+    function generateScheme(data) {
+      const { grade, subject, term, topics } = data;
+      const h = getHeaderInfo();
+      const title = 'Scheme of Work — ' + subject + ' · ' + grade + ' · ' + term;
+      const topicList = topics ? topics.split('\\n').filter(t => t.trim()) : [
+        'Introduction and orientation to the subject / term overview',
+        'Core concepts and skills development',
+        'Application, practice and problem-solving',
+        'Integration, cross-curricular links and revision',
+        'Continuous assessment, feedback and consolidation'
+      ];
+      const weeks = topicList.map((t, i) => \`
+        <tr class="border-b border-slate-100">
+          <td class="py-2 pr-3 text-slate-600">\${i + 1}</td>
+          <td class="py-2 pr-3">\${t.trim()}</td>
+          <td class="py-2 pr-3 text-slate-600">Explain, demonstrate, guided practice, group work</td>
+          <td class="py-2 text-slate-600">Syllabus, textbook, worksheets, visual aids</td>
+        </tr>\`).join('');
+
+      const html = \`
+        <div class="print-area">
+          <div class="flex items-start justify-between mb-4 no-print flex-wrap gap-2">
+            <h2 class="text-lg font-bold text-slate-900">Scheme of Work</h2>
+            <div class="flex gap-2">
+              <button onclick="downloadPdf('result-scheme', '\${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
+              <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-print mr-1"></i> Print</button>
+              <button onclick="copyResult('result-scheme')" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-copy mr-1"></i> Copy</button>
+            </div>
+          </div>
+          <div class="border border-slate-200 rounded-lg overflow-hidden text-sm">
+            <div class="bg-emerald-700 text-white px-4 py-3">
+              <div class="font-semibold">Republic of Namibia · NIED · Scheme of Work</div>
+              <div class="text-emerald-100 text-xs mt-0.5">\${h.schoolLine}</div>
+            </div>
+            <div class="p-4 space-y-4 bg-white">
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div><span class="text-slate-500">Teacher:</span> <strong>\${h.teacher}</strong></div>
+                <div><span class="text-slate-500">Subject:</span> <strong>\${subject}</strong></div>
+                <div><span class="text-slate-500">Grade:</span> <strong>\${grade}</strong></div>
+                <div><span class="text-slate-500">Period:</span> <strong>\${term}</strong></div>
+                <div><span class="text-slate-500">Date prepared:</span> <strong>\${new Date().toLocaleDateString()}</strong></div>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-emerald-700 border-b border-slate-100 pb-1 mb-2">Overall Aim</h3>
+                <p class="text-slate-700">To enable learners to achieve the basic competencies prescribed in the NIED syllabus for \${subject} at \${grade} level during \${term}, through learner-centred and activity-based approaches.</p>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                  <thead>
+                    <tr class="bg-slate-50 text-slate-600 text-xs uppercase">
+                      <th class="py-2 pr-3">Week</th>
+                      <th class="py-2 pr-3">Theme / Topic</th>
+                      <th class="py-2 pr-3">Methods / Activities</th>
+                      <th class="py-2">Resources</th>
+                    </tr>
+                  </thead>
+                  <tbody>\${weeks}</tbody>
+                </table>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-emerald-700 border-b border-slate-100 pb-1 mb-2">Assessment</h3>
+                <p class="text-slate-700">Continuous assessment (observation, oral questions, written tasks, projects) throughout the term. Formal class tests as scheduled by the school. End-of-term examination where applicable.</p>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-emerald-700 border-b border-slate-100 pb-1 mb-2">Remarks</h3>
+                <p class="text-slate-700">Adjust pacing according to learner needs and school calendar. Integrate Life Skills and cross-curricular links where appropriate. Provide learning support for learners who require additional assistance.</p>
+              </div>
+
+              <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">
+                Generated for Namibian Curriculum (NIED) · EduMate Namibia · \${new Date().toLocaleString()}
+              </div>
+            </div>
+          </div>
+        </div>\`;
+      return { title, html, meta: grade + ' · ' + subject + ' · ' + term };
+    }
+
+    function generateAssessment(data) {
+      const { grade, subject, topic, type, marks, duration } = data;
+      const h = getHeaderInfo();
+      const title = type + ' — ' + subject + ' · ' + grade + ' · ' + topic;
+      const half = Math.floor(Number(marks) / 2);
+      const rest = Number(marks) - half;
+      const html = \`
+        <div class="print-area">
+          <div class="flex items-start justify-between mb-4 no-print flex-wrap gap-2">
+            <h2 class="text-lg font-bold text-slate-900">Assessment</h2>
+            <div class="flex gap-2">
+              <button onclick="downloadPdf('result-assessment', '\${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
+              <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-print mr-1"></i> Print</button>
+              <button onclick="copyResult('result-assessment')" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-copy mr-1"></i> Copy</button>
+            </div>
+          </div>
+          <div class="border border-slate-200 rounded-lg overflow-hidden text-sm">
+            <div class="bg-amber-600 text-white px-4 py-3">
+              <div class="font-semibold">Republic of Namibia · Ministry of Education · \${type}</div>
+              <div class="text-amber-100 text-xs mt-0.5">\${h.schoolLine}</div>
+            </div>
+            <div class="p-4 space-y-4 bg-white">
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div><span class="text-slate-500">Teacher:</span> <strong>\${h.teacher}</strong></div>
+                <div><span class="text-slate-500">Subject:</span> <strong>\${subject}</strong></div>
+                <div><span class="text-slate-500">Grade:</span> <strong>\${grade}</strong></div>
+                <div><span class="text-slate-500">Topic:</span> <strong>\${topic}</strong></div>
+                <div><span class="text-slate-500">Total Marks:</span> <strong>\${marks}</strong></div>
+                <div><span class="text-slate-500">Duration:</span> <strong>\${duration}</strong></div>
+                <div><span class="text-slate-500">Date:</span> <strong>\${new Date().toLocaleDateString()}</strong></div>
+              </div>
+
+              <div class="bg-slate-50 rounded-lg p-3 text-slate-600">
+                <strong>Instructions:</strong> Answer all questions. Write neatly. Show working where applicable. Marks are indicated in brackets.
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-amber-700 border-b border-slate-100 pb-1 mb-2">Section A: Short Questions (\${half} marks)</h3>
+                <ol class="list-decimal list-inside space-y-2 text-slate-700">
+                  <li>Define or explain a key term related to <em>\${topic}</em>. (2)</li>
+                  <li>List three important facts or characteristics of \${topic}. (3)</li>
+                  <li>State one real-life example of \${topic} relevant to Namibia. (2)</li>
+                  <li>Complete / identify a short item related to \${topic}. (3)</li>
+                </ol>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-amber-700 border-b border-slate-100 pb-1 mb-2">Section B: Structured / Application (\${rest} marks)</h3>
+                <ol class="list-decimal list-inside space-y-2 text-slate-700" start="5">
+                  <li>Describe the main process or concept of \${topic} in your own words. (5)</li>
+                  <li>Explain how \${topic} is applied or observed in everyday life or in the Namibian context. (5)</li>
+                  <li>Solve / analyse a short problem or case study based on \${topic}. Show your reasoning. (\${Math.max(5, rest - 10)})</li>
+                </ol>
+              </div>
+
+              <div class="mt-4 p-3 bg-amber-50 rounded-lg border border-amber-100">
+                <h3 class="font-semibold text-amber-800 mb-1">Marking Scheme (Teacher Use)</h3>
+                <ul class="text-sm text-amber-900 space-y-1">
+                  <li>• Award marks for correct content, clear expression and use of subject terminology.</li>
+                  <li>• Partial marks for partially correct answers.</li>
+                  <li>• Record results for continuous assessment records as required by NIED / school policy.</li>
+                </ul>
+              </div>
+
+              <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">
+                Generated for Namibian Curriculum (NIED) · EduMate Namibia · \${new Date().toLocaleString()}
+              </div>
+            </div>
+          </div>
+        </div>\`;
+      return { title, html, meta: grade + ' · ' + subject + ' · ' + type };
+    }
+
+    function generateNotes(data) {
+      const { grade, subject, topic, type } = data;
+      const h = getHeaderInfo();
+      const hints = getSubjectHints(subject, topic);
+      const title = 'Teaching Notes — ' + topic + ' · ' + grade;
+      const html = \`
+        <div class="print-area">
+          <div class="flex items-start justify-between mb-4 no-print flex-wrap gap-2">
+            <h2 class="text-lg font-bold text-slate-900">Teaching Notes</h2>
+            <div class="flex gap-2">
+              <button onclick="downloadPdf('result-notes', '\${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
+              <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-print mr-1"></i> Print</button>
+              <button onclick="copyResult('result-notes')" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-copy mr-1"></i> Copy</button>
+            </div>
+          </div>
+          <div class="border border-slate-200 rounded-lg overflow-hidden text-sm">
+            <div class="bg-violet-700 text-white px-4 py-3">
+              <div class="font-semibold">NIED Teaching Notes · \${type}</div>
+              <div class="text-violet-100 text-xs mt-0.5">\${h.schoolLine}</div>
+            </div>
+            <div class="p-4 space-y-4 bg-white">
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div><span class="text-slate-500">Teacher:</span> <strong>\${h.teacher}</strong></div>
+                <div><span class="text-slate-500">Subject:</span> <strong>\${subject}</strong></div>
+                <div><span class="text-slate-500">Grade:</span> <strong>\${grade}</strong></div>
+                <div class="sm:col-span-2"><span class="text-slate-500">Topic:</span> <strong>\${topic}</strong></div>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Key Learning Points</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-700">
+                  <li>\${topic} is an important concept in the \${subject} syllabus for \${grade}.</li>
+                  <li>Learners need to understand the definition, main features and real-life relevance of \${topic}.</li>
+                  <li>Emphasis on basic competencies: knowledge, skills, values and attitudes as outlined by NIED.</li>
+                  <li>Use examples from the Namibian environment to make learning meaningful.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Learner Notes (Summary)</h3>
+                <div class="bg-slate-50 rounded-lg p-3 text-slate-700 space-y-2">
+                  <p><strong>What is \${topic}?</strong><br>
+                  \${topic} refers to the main ideas, processes or skills that learners must master in this unit of work.</p>
+                  <p><strong>Why is it important?</strong><br>
+                  Understanding \${topic} helps learners apply knowledge in everyday life and prepares them for further learning and assessment.</p>
+                  <p><strong>Key competency focus</strong><br>
+                  \${hints.competency}.</p>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Teacher Guide Tips</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-700">
+                  <li>Start with what learners already know (prior knowledge).</li>
+                  <li>Use concrete materials, pictures or local examples wherever possible.</li>
+                  <li>Plan for differentiation — support struggling learners and extend those who finish early.</li>
+                  <li>Include short formative checks (questions, thumbs-up, mini whiteboards).</li>
+                  <li>Link the lesson to other subjects or Life Skills where appropriate.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Suggested Activities</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-700">
+                  <li>\${hints.activity}</li>
+                  <li>Think–Pair–Share discussion on \${topic}</li>
+                  <li>Individual written exercise or drawing</li>
+                  <li>Oral presentation of findings</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Recommended Materials</h3>
+                <p class="text-slate-700">\${hints.materials}</p>
+              </div>
+
+              <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">
+                Generated for Namibian Curriculum (NIED) · EduMate Namibia · \${new Date().toLocaleString()}
+              </div>
+            </div>
+          </div>
+        </div>\`;
+      return { title, html, meta: grade + ' · ' + subject + ' · ' + type };
+    }
+
+    // ========== FORM HANDLERS ==========
+    function handleGenerate(formId, resultId, type, generatorFn) {
+      document.getElementById(formId).addEventListener('submit', e => {
+        e.preventDefault();
+        const form = e.target;
+        const data = Object.fromEntries(new FormData(form).entries());
+        const resultEl = document.getElementById(resultId);
+        resultEl.innerHTML = \`<div class="text-center py-16 text-slate-500"><i class="fas fa-spinner fa-spin text-3xl mb-3"></i><p>Generating NIED-aligned content…</p></div>\`;
+
+        setTimeout(() => {
+          const { title, html, meta } = generatorFn(data);
+          resultEl.innerHTML = html;
+          saveGenerated({
+            type,
+            title,
+            meta,
+            html,
+            date: new Date().toISOString()
+          });
+        }, 500);
+      });
+    }
+
+    handleGenerate('form-lesson', 'result-lesson', 'lesson', generateLessonPlan);
+    handleGenerate('form-scheme', 'result-scheme', 'scheme', generateScheme);
+    handleGenerate('form-assessment', 'result-assessment', 'assessment', generateAssessment);
+    handleGenerate('form-notes', 'result-notes', 'notes', generateNotes);
+
+    // Init
+    updateStats();
+    renderGeneratedList();
+  </script>
 </body>
 </html>
