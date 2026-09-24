@@ -707,32 +707,32 @@
     function renderGeneratedList() {
       const list = document.getElementById('generatedList');
       if (state.generated.length === 0) {
-        list.innerHTML = \`
+        list.innerHTML = `
           <div class="text-center text-slate-400 py-16 bg-white rounded-xl border border-slate-200">
             <i class="fas fa-folder-open text-4xl mb-3 opacity-50"></i>
             <p>No materials generated yet. Start by creating a lesson plan or scheme of work.</p>
-          </div>\`;
+          </div>`;
         return;
       }
-      list.innerHTML = state.generated.map((g, i) => \`
+      list.innerHTML = state.generated.map((g, i) => `
         <div class="bg-white rounded-xl border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white
-              \${g.type === 'lesson' ? 'bg-brand-500' : g.type === 'scheme' ? 'bg-emerald-500' : g.type === 'assessment' ? 'bg-amber-500' : 'bg-violet-500'}">
-              <i class="fas \${g.type === 'lesson' ? 'fa-book-open' : g.type === 'scheme' ? 'fa-calendar-alt' : g.type === 'assessment' ? 'fa-clipboard-list' : 'fa-sticky-note'}"></i>
+              ${g.type === 'lesson' ? 'bg-brand-500' : g.type === 'scheme' ? 'bg-emerald-500' : g.type === 'assessment' ? 'bg-amber-500' : 'bg-violet-500'}">
+              <i class="fas ${g.type === 'lesson' ? 'fa-book-open' : g.type === 'scheme' ? 'fa-calendar-alt' : g.type === 'assessment' ? 'fa-clipboard-list' : 'fa-sticky-note'}"></i>
             </div>
             <div>
-              <div class="font-medium text-slate-900">\${g.title}</div>
-              <div class="text-xs text-slate-500">\${g.meta} · \${new Date(g.date).toLocaleDateString()}</div>
+              <div class="font-medium text-slate-900">${g.title}</div>
+              <div class="text-xs text-slate-500">${g.meta} · ${new Date(g.date).toLocaleDateString()}</div>
             </div>
           </div>
           <div class="flex gap-2">
-            <button onclick="viewGenerated(\${i})" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">View</button>
-            <button onclick="downloadPdfFromSaved(\${i})" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 transition"><i class="fas fa-file-pdf mr-1"></i>PDF</button>
-            <button onclick="deleteGenerated(\${i})" class="text-sm px-3 py-1.5 rounded-lg text-red-600 hover:bg-red-50 transition">Delete</button>
+            <button onclick="viewGenerated(${i})" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">View</button>
+            <button onclick="downloadPdfFromSaved(${i})" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 transition"><i class="fas fa-file-pdf mr-1"></i>PDF</button>
+            <button onclick="deleteGenerated(${i})" class="text-sm px-3 py-1.5 rounded-lg text-red-600 hover:bg-red-50 transition">Delete</button>
           </div>
         </div>
-      \`).join('');
+      `).join('');
     }
 
     window.viewGenerated = function(i) {
@@ -841,12 +841,12 @@
       const h = getHeaderInfo();
       const hints = getSubjectHints(subject, topic);
       const title = subject + ' — ' + grade + ' — ' + term + (week ? ', ' + week : '');
-      const html = \`
+      const html = `
         <div class="print-area">
           <div class="flex items-start justify-between mb-4 no-print flex-wrap gap-2">
             <h2 class="text-lg font-bold text-slate-900">Lesson Plan</h2>
             <div class="flex gap-2">
-              <button onclick="downloadPdf('result-lesson', '\${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
+              <button onclick="downloadPdf('result-lesson', '${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
               <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-print mr-1"></i> Print</button>
               <button onclick="copyResult('result-lesson')" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-copy mr-1"></i> Copy</button>
             </div>
@@ -854,24 +854,24 @@
           <div class="border border-slate-200 rounded-lg overflow-hidden text-sm">
             <div class="bg-namibia-blue text-white px-4 py-3">
               <div class="font-semibold">Republic of Namibia · Ministry of Education, Arts and Culture · NIED</div>
-              <div class="text-blue-100 text-xs mt-0.5">\${h.schoolLine}</div>
+              <div class="text-blue-100 text-xs mt-0.5">${h.schoolLine}</div>
             </div>
             <div class="p-4 space-y-4 bg-white">
               <div class="grid sm:grid-cols-2 gap-3">
-                <div><span class="text-slate-500">Teacher:</span> <strong>\${h.teacher}</strong></div>
-                <div><span class="text-slate-500">Subject:</span> <strong>\${subject}</strong></div>
-                <div><span class="text-slate-500">Grade:</span> <strong>\${grade}</strong></div>
-                <div><span class="text-slate-500">Topic:</span> <strong>\${topic}</strong></div>
-                <div><span class="text-slate-500">Term / Week:</span> <strong>\${term}\${week ? ' · ' + week : ''}</strong></div>
-                <div><span class="text-slate-500">Duration:</span> <strong>\${duration}</strong></div>
-                <div><span class="text-slate-500">Date:</span> <strong>\${new Date().toLocaleDateString()}</strong></div>
+                <div><span class="text-slate-500">Teacher:</span> <strong>${h.teacher}</strong></div>
+                <div><span class="text-slate-500">Subject:</span> <strong>${subject}</strong></div>
+                <div><span class="text-slate-500">Grade:</span> <strong>${grade}</strong></div>
+                <div><span class="text-slate-500">Topic:</span> <strong>${topic}</strong></div>
+                <div><span class="text-slate-500">Term / Week:</span> <strong>${term}${week ? ' · ' + week : ''}</strong></div>
+                <div><span class="text-slate-500">Duration:</span> <strong>${duration}</strong></div>
+                <div><span class="text-slate-500">Date:</span> <strong>${new Date().toLocaleDateString()}</strong></div>
               </div>
 
               <div>
                 <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Lesson Objectives</h3>
                 <ul class="list-disc list-inside space-y-1 text-slate-700">
-                  <li>Learners will understand and explain key concepts related to <em>\${topic}</em>.</li>
-                  <li>Learners will apply knowledge of \${topic} through practical classroom activities.</li>
+                  <li>Learners will understand and explain key concepts related to <em>${topic}</em>.</li>
+                  <li>Learners will apply knowledge of ${topic} through practical classroom activities.</li>
                   <li>Learners will demonstrate the basic competencies required by the NIED syllabus for this topic.</li>
                 </ul>
               </div>
@@ -880,9 +880,9 @@
                 <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Basic Competencies (NIED)</h3>
                 <p class="text-slate-700">Learners should be able to:</p>
                 <ul class="list-disc list-inside space-y-1 text-slate-700 mt-1">
-                  <li>Identify and describe the main ideas of \${topic}.</li>
+                  <li>Identify and describe the main ideas of ${topic}.</li>
                   <li>Use appropriate subject-specific terminology correctly.</li>
-                  <li>\${hints.competency}.</li>
+                  <li>${hints.competency}.</li>
                   <li>Work cooperatively and reflect on their own learning.</li>
                 </ul>
               </div>
@@ -890,8 +890,8 @@
               <div>
                 <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Teaching & Learning Materials</h3>
                 <ul class="list-disc list-inside space-y-1 text-slate-700">
-                  <li>NIED syllabus / curriculum guide for \${subject}</li>
-                  <li>\${hints.materials}</li>
+                  <li>NIED syllabus / curriculum guide for ${subject}</li>
+                  <li>${hints.materials}</li>
                   <li>Chalkboard / whiteboard / projector</li>
                 </ul>
               </div>
@@ -901,15 +901,15 @@
                 <div class="space-y-3">
                   <div>
                     <strong class="text-slate-800">1. Introduction (5–8 min)</strong>
-                    <p class="text-slate-600 mt-0.5">Greet learners. Review previous lesson. Introduce <em>\${topic}</em> with a question, story or visual stimulus linked to Namibian context to activate prior knowledge.</p>
+                    <p class="text-slate-600 mt-0.5">Greet learners. Review previous lesson. Introduce <em>${topic}</em> with a question, story or visual stimulus linked to Namibian context to activate prior knowledge.</p>
                   </div>
                   <div>
                     <strong class="text-slate-800">2. Presentation / Development (15–25 min)</strong>
-                    <p class="text-slate-600 mt-0.5">Explain core concepts of \${topic} using clear language and local examples. Use questioning, demonstration and guided discussion. Write key points on the board. Check understanding frequently.</p>
+                    <p class="text-slate-600 mt-0.5">Explain core concepts of ${topic} using clear language and local examples. Use questioning, demonstration and guided discussion. Write key points on the board. Check understanding frequently.</p>
                   </div>
                   <div>
                     <strong class="text-slate-800">3. Learner Activities (10–15 min)</strong>
-                    <p class="text-slate-600 mt-0.5">\${hints.activity}. Teacher monitors, supports and differentiates for learners who need extra help.</p>
+                    <p class="text-slate-600 mt-0.5">${hints.activity}. Teacher monitors, supports and differentiates for learners who need extra help.</p>
                   </div>
                   <div>
                     <strong class="text-slate-800">4. Conclusion & Assessment (5–8 min)</strong>
@@ -925,15 +925,15 @@
 
               <div>
                 <h3 class="font-semibold text-brand-700 border-b border-slate-100 pb-1 mb-2">Homework / Extension</h3>
-                <p class="text-slate-700">A short exercise or reading related to \${topic} to reinforce learning at home or in the next period.</p>
+                <p class="text-slate-700">A short exercise or reading related to ${topic} to reinforce learning at home or in the next period.</p>
               </div>
 
               <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">
-                Generated for Namibian Curriculum (NIED) · EduMate Namibia · \${new Date().toLocaleString()}
+                Generated for Namibian Curriculum (NIED) · EduMate Namibia · ${new Date().toLocaleString()}
               </div>
             </div>
           </div>
-        </div>\`;
+        </div>`;
       return { title, html, meta: grade + ' · ' + subject };
     }
 
@@ -948,20 +948,20 @@
         'Integration, cross-curricular links and revision',
         'Continuous assessment, feedback and consolidation'
       ];
-      const weeks = topicList.map((t, i) => \`
+      const weeks = topicList.map((t, i) => `
         <tr class="border-b border-slate-100">
-          <td class="py-2 pr-3 text-slate-600">\${i + 1}</td>
-          <td class="py-2 pr-3">\${t.trim()}</td>
+          <td class="py-2 pr-3 text-slate-600">${i + 1}</td>
+          <td class="py-2 pr-3">${t.trim()}</td>
           <td class="py-2 pr-3 text-slate-600">Explain, demonstrate, guided practice, group work</td>
           <td class="py-2 text-slate-600">Syllabus, textbook, worksheets, visual aids</td>
-        </tr>\`).join('');
+        </tr>`).join('');
 
-      const html = \`
+      const html = `
         <div class="print-area">
           <div class="flex items-start justify-between mb-4 no-print flex-wrap gap-2">
             <h2 class="text-lg font-bold text-slate-900">Scheme of Work</h2>
             <div class="flex gap-2">
-              <button onclick="downloadPdf('result-scheme', '\${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
+              <button onclick="downloadPdf('result-scheme', '${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
               <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-print mr-1"></i> Print</button>
               <button onclick="copyResult('result-scheme')" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-copy mr-1"></i> Copy</button>
             </div>
@@ -969,20 +969,20 @@
           <div class="border border-slate-200 rounded-lg overflow-hidden text-sm">
             <div class="bg-emerald-700 text-white px-4 py-3">
               <div class="font-semibold">Republic of Namibia · NIED · Scheme of Work</div>
-              <div class="text-emerald-100 text-xs mt-0.5">\${h.schoolLine}</div>
+              <div class="text-emerald-100 text-xs mt-0.5">${h.schoolLine}</div>
             </div>
             <div class="p-4 space-y-4 bg-white">
               <div class="grid sm:grid-cols-2 gap-3">
-                <div><span class="text-slate-500">Teacher:</span> <strong>\${h.teacher}</strong></div>
-                <div><span class="text-slate-500">Subject:</span> <strong>\${subject}</strong></div>
-                <div><span class="text-slate-500">Grade:</span> <strong>\${grade}</strong></div>
-                <div><span class="text-slate-500">Period:</span> <strong>\${term}</strong></div>
-                <div><span class="text-slate-500">Date prepared:</span> <strong>\${new Date().toLocaleDateString()}</strong></div>
+                <div><span class="text-slate-500">Teacher:</span> <strong>${h.teacher}</strong></div>
+                <div><span class="text-slate-500">Subject:</span> <strong>${subject}</strong></div>
+                <div><span class="text-slate-500">Grade:</span> <strong>${grade}</strong></div>
+                <div><span class="text-slate-500">Period:</span> <strong>${term}</strong></div>
+                <div><span class="text-slate-500">Date prepared:</span> <strong>${new Date().toLocaleDateString()}</strong></div>
               </div>
 
               <div>
                 <h3 class="font-semibold text-emerald-700 border-b border-slate-100 pb-1 mb-2">Overall Aim</h3>
-                <p class="text-slate-700">To enable learners to achieve the basic competencies prescribed in the NIED syllabus for \${subject} at \${grade} level during \${term}, through learner-centred and activity-based approaches.</p>
+                <p class="text-slate-700">To enable learners to achieve the basic competencies prescribed in the NIED syllabus for ${subject} at ${grade} level during ${term}, through learner-centred and activity-based approaches.</p>
               </div>
 
               <div class="overflow-x-auto">
@@ -995,7 +995,7 @@
                       <th class="py-2">Resources</th>
                     </tr>
                   </thead>
-                  <tbody>\${weeks}</tbody>
+                  <tbody>${weeks}</tbody>
                 </table>
               </div>
 
@@ -1010,11 +1010,11 @@
               </div>
 
               <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">
-                Generated for Namibian Curriculum (NIED) · EduMate Namibia · \${new Date().toLocaleString()}
+                Generated for Namibian Curriculum (NIED) · EduMate Namibia · ${new Date().toLocaleString()}
               </div>
             </div>
           </div>
-        </div>\`;
+        </div>`;
       return { title, html, meta: grade + ' · ' + subject + ' · ' + term };
     }
 
@@ -1024,30 +1024,30 @@
       const title = type + ' — ' + subject + ' · ' + grade + ' · ' + topic;
       const half = Math.floor(Number(marks) / 2);
       const rest = Number(marks) - half;
-      const html = \`
+      const html = `
         <div class="print-area">
           <div class="flex items-start justify-between mb-4 no-print flex-wrap gap-2">
             <h2 class="text-lg font-bold text-slate-900">Assessment</h2>
             <div class="flex gap-2">
-              <button onclick="downloadPdf('result-assessment', '\${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
+              <button onclick="downloadPdf('result-assessment', '${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
               <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-print mr-1"></i> Print</button>
               <button onclick="copyResult('result-assessment')" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-copy mr-1"></i> Copy</button>
             </div>
           </div>
           <div class="border border-slate-200 rounded-lg overflow-hidden text-sm">
             <div class="bg-amber-600 text-white px-4 py-3">
-              <div class="font-semibold">Republic of Namibia · Ministry of Education · \${type}</div>
-              <div class="text-amber-100 text-xs mt-0.5">\${h.schoolLine}</div>
+              <div class="font-semibold">Republic of Namibia · Ministry of Education · ${type}</div>
+              <div class="text-amber-100 text-xs mt-0.5">${h.schoolLine}</div>
             </div>
             <div class="p-4 space-y-4 bg-white">
               <div class="grid sm:grid-cols-2 gap-3">
-                <div><span class="text-slate-500">Teacher:</span> <strong>\${h.teacher}</strong></div>
-                <div><span class="text-slate-500">Subject:</span> <strong>\${subject}</strong></div>
-                <div><span class="text-slate-500">Grade:</span> <strong>\${grade}</strong></div>
-                <div><span class="text-slate-500">Topic:</span> <strong>\${topic}</strong></div>
-                <div><span class="text-slate-500">Total Marks:</span> <strong>\${marks}</strong></div>
-                <div><span class="text-slate-500">Duration:</span> <strong>\${duration}</strong></div>
-                <div><span class="text-slate-500">Date:</span> <strong>\${new Date().toLocaleDateString()}</strong></div>
+                <div><span class="text-slate-500">Teacher:</span> <strong>${h.teacher}</strong></div>
+                <div><span class="text-slate-500">Subject:</span> <strong>${subject}</strong></div>
+                <div><span class="text-slate-500">Grade:</span> <strong>${grade}</strong></div>
+                <div><span class="text-slate-500">Topic:</span> <strong>${topic}</strong></div>
+                <div><span class="text-slate-500">Total Marks:</span> <strong>${marks}</strong></div>
+                <div><span class="text-slate-500">Duration:</span> <strong>${duration}</strong></div>
+                <div><span class="text-slate-500">Date:</span> <strong>${new Date().toLocaleDateString()}</strong></div>
               </div>
 
               <div class="bg-slate-50 rounded-lg p-3 text-slate-600">
@@ -1055,21 +1055,21 @@
               </div>
 
               <div>
-                <h3 class="font-semibold text-amber-700 border-b border-slate-100 pb-1 mb-2">Section A: Short Questions (\${half} marks)</h3>
+                <h3 class="font-semibold text-amber-700 border-b border-slate-100 pb-1 mb-2">Section A: Short Questions (${half} marks)</h3>
                 <ol class="list-decimal list-inside space-y-2 text-slate-700">
-                  <li>Define or explain a key term related to <em>\${topic}</em>. (2)</li>
-                  <li>List three important facts or characteristics of \${topic}. (3)</li>
-                  <li>State one real-life example of \${topic} relevant to Namibia. (2)</li>
-                  <li>Complete / identify a short item related to \${topic}. (3)</li>
+                  <li>Define or explain a key term related to <em>${topic}</em>. (2)</li>
+                  <li>List three important facts or characteristics of ${topic}. (3)</li>
+                  <li>State one real-life example of ${topic} relevant to Namibia. (2)</li>
+                  <li>Complete / identify a short item related to ${topic}. (3)</li>
                 </ol>
               </div>
 
               <div>
-                <h3 class="font-semibold text-amber-700 border-b border-slate-100 pb-1 mb-2">Section B: Structured / Application (\${rest} marks)</h3>
+                <h3 class="font-semibold text-amber-700 border-b border-slate-100 pb-1 mb-2">Section B: Structured / Application (${rest} marks)</h3>
                 <ol class="list-decimal list-inside space-y-2 text-slate-700" start="5">
-                  <li>Describe the main process or concept of \${topic} in your own words. (5)</li>
-                  <li>Explain how \${topic} is applied or observed in everyday life or in the Namibian context. (5)</li>
-                  <li>Solve / analyse a short problem or case study based on \${topic}. Show your reasoning. (\${Math.max(5, rest - 10)})</li>
+                  <li>Describe the main process or concept of ${topic} in your own words. (5)</li>
+                  <li>Explain how ${topic} is applied or observed in everyday life or in the Namibian context. (5)</li>
+                  <li>Solve / analyse a short problem or case study based on ${topic}. Show your reasoning. (${Math.max(5, rest - 10)})</li>
                 </ol>
               </div>
 
@@ -1083,11 +1083,11 @@
               </div>
 
               <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">
-                Generated for Namibian Curriculum (NIED) · EduMate Namibia · \${new Date().toLocaleString()}
+                Generated for Namibian Curriculum (NIED) · EduMate Namibia · ${new Date().toLocaleString()}
               </div>
             </div>
           </div>
-        </div>\`;
+        </div>`;
       return { title, html, meta: grade + ' · ' + subject + ' · ' + type };
     }
 
@@ -1096,34 +1096,34 @@
       const h = getHeaderInfo();
       const hints = getSubjectHints(subject, topic);
       const title = 'Teaching Notes — ' + topic + ' · ' + grade;
-      const html = \`
+      const html = `
         <div class="print-area">
           <div class="flex items-start justify-between mb-4 no-print flex-wrap gap-2">
             <h2 class="text-lg font-bold text-slate-900">Teaching Notes</h2>
             <div class="flex gap-2">
-              <button onclick="downloadPdf('result-notes', '\${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
+              <button onclick="downloadPdf('result-notes', '${title.replace(/'/g, '')}.pdf')" class="text-sm px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700"><i class="fas fa-file-pdf mr-1"></i> PDF</button>
               <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-print mr-1"></i> Print</button>
               <button onclick="copyResult('result-notes')" class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200"><i class="fas fa-copy mr-1"></i> Copy</button>
             </div>
           </div>
           <div class="border border-slate-200 rounded-lg overflow-hidden text-sm">
             <div class="bg-violet-700 text-white px-4 py-3">
-              <div class="font-semibold">NIED Teaching Notes · \${type}</div>
-              <div class="text-violet-100 text-xs mt-0.5">\${h.schoolLine}</div>
+              <div class="font-semibold">NIED Teaching Notes · ${type}</div>
+              <div class="text-violet-100 text-xs mt-0.5">${h.schoolLine}</div>
             </div>
             <div class="p-4 space-y-4 bg-white">
               <div class="grid sm:grid-cols-2 gap-3">
-                <div><span class="text-slate-500">Teacher:</span> <strong>\${h.teacher}</strong></div>
-                <div><span class="text-slate-500">Subject:</span> <strong>\${subject}</strong></div>
-                <div><span class="text-slate-500">Grade:</span> <strong>\${grade}</strong></div>
-                <div class="sm:col-span-2"><span class="text-slate-500">Topic:</span> <strong>\${topic}</strong></div>
+                <div><span class="text-slate-500">Teacher:</span> <strong>${h.teacher}</strong></div>
+                <div><span class="text-slate-500">Subject:</span> <strong>${subject}</strong></div>
+                <div><span class="text-slate-500">Grade:</span> <strong>${grade}</strong></div>
+                <div class="sm:col-span-2"><span class="text-slate-500">Topic:</span> <strong>${topic}</strong></div>
               </div>
 
               <div>
                 <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Key Learning Points</h3>
                 <ul class="list-disc list-inside space-y-1 text-slate-700">
-                  <li>\${topic} is an important concept in the \${subject} syllabus for \${grade}.</li>
-                  <li>Learners need to understand the definition, main features and real-life relevance of \${topic}.</li>
+                  <li>${topic} is an important concept in the ${subject} syllabus for ${grade}.</li>
+                  <li>Learners need to understand the definition, main features and real-life relevance of ${topic}.</li>
                   <li>Emphasis on basic competencies: knowledge, skills, values and attitudes as outlined by NIED.</li>
                   <li>Use examples from the Namibian environment to make learning meaningful.</li>
                 </ul>
@@ -1132,12 +1132,12 @@
               <div>
                 <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Learner Notes (Summary)</h3>
                 <div class="bg-slate-50 rounded-lg p-3 text-slate-700 space-y-2">
-                  <p><strong>What is \${topic}?</strong><br>
-                  \${topic} refers to the main ideas, processes or skills that learners must master in this unit of work.</p>
+                  <p><strong>What is ${topic}?</strong><br>
+                  ${topic} refers to the main ideas, processes or skills that learners must master in this unit of work.</p>
                   <p><strong>Why is it important?</strong><br>
-                  Understanding \${topic} helps learners apply knowledge in everyday life and prepares them for further learning and assessment.</p>
+                  Understanding ${topic} helps learners apply knowledge in everyday life and prepares them for further learning and assessment.</p>
                   <p><strong>Key competency focus</strong><br>
-                  \${hints.competency}.</p>
+                  ${hints.competency}.</p>
                 </div>
               </div>
 
@@ -1155,8 +1155,8 @@
               <div>
                 <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Suggested Activities</h3>
                 <ul class="list-disc list-inside space-y-1 text-slate-700">
-                  <li>\${hints.activity}</li>
-                  <li>Think–Pair–Share discussion on \${topic}</li>
+                  <li>${hints.activity}</li>
+                  <li>Think–Pair–Share discussion on ${topic}</li>
                   <li>Individual written exercise or drawing</li>
                   <li>Oral presentation of findings</li>
                 </ul>
@@ -1164,15 +1164,15 @@
 
               <div>
                 <h3 class="font-semibold text-violet-700 border-b border-slate-100 pb-1 mb-2">Recommended Materials</h3>
-                <p class="text-slate-700">\${hints.materials}</p>
+                <p class="text-slate-700">${hints.materials}</p>
               </div>
 
               <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">
-                Generated for Namibian Curriculum (NIED) · EduMate Namibia · \${new Date().toLocaleString()}
+                Generated for Namibian Curriculum (NIED) · EduMate Namibia · ${new Date().toLocaleString()}
               </div>
             </div>
           </div>
-        </div>\`;
+        </div>`;
       return { title, html, meta: grade + ' · ' + subject + ' · ' + type };
     }
 
@@ -1183,7 +1183,7 @@
         const form = e.target;
         const data = Object.fromEntries(new FormData(form).entries());
         const resultEl = document.getElementById(resultId);
-        resultEl.innerHTML = \`<div class="text-center py-16 text-slate-500"><i class="fas fa-spinner fa-spin text-3xl mb-3"></i><p>Generating NIED-aligned content…</p></div>\`;
+        resultEl.innerHTML = `<div class="text-center py-16 text-slate-500"><i class="fas fa-spinner fa-spin text-3xl mb-3"></i><p>Generating NIED-aligned content…</p></div>`;
 
         setTimeout(() => {
           const { title, html, meta } = generatorFn(data);
