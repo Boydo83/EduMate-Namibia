@@ -664,6 +664,7 @@
     const overlay = document.getElementById('sidebarOverlay');
 
     function showView(id) {
+      console.log("Switching to view:", id);
       views.forEach(v => v.classList.add('hidden'));
       document.getElementById('view-' + id).classList.remove('hidden');
       links.forEach(l => l.classList.toggle('active', l.dataset.view === id));
