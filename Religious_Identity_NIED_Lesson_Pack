@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Religious Identity – NIED Lesson Pack (Pre-Primary & Grades 1–3)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    @media print {
+      .page-break { page-break-before: always; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-6">
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden">
+    
+    <!-- Cover -->
+    <div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-8 text-center">
+      <div class="text-4xl mb-2">🇳🇦</div>
+      <h1 class="text-2xl font-bold">Religious Identity & Belonging</h1>
+      <p class="text-blue-100 mt-1">Religious and Moral Education · NIED Aligned</p>
+      <p class="text-sm text-blue-200 mt-3">Pre-Primary & Grades 1–3 · Full Scheme of Work + 8 Lesson Plans</p>
+      <p class="text-xs text-blue-300 mt-4">EduMate Namibia · For Namibian Teachers</p>
+    </div>
+
+    <div class="p-6 space-y-8">
+
+      <!-- Scheme of Work -->
+      <section>
+        <h2 class="text-xl font-bold text-blue-900 border-b-2 border-blue-200 pb-2 mb-4">Scheme of Work – Religious Identity</h2>
+        <table class="w-full text-sm border border-slate-300">
+          <thead class="bg-blue-50">
+            <tr>
+              <th class="border border-slate-300 p-2 text-left">Week</th>
+              <th class="border border-slate-300 p-2 text-left">Topic / Sub-theme</th>
+              <th class="border border-slate-300 p-2 text-left">Focus</th>
+              <th class="border border-slate-300 p-2 text-left">Main Activity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="border p-2 font-semibold">1</td><td class="border p-2">I am special and loved</td><td class="border p-2">Self-worth</td><td class="border p-2">Mirror activity + song</td></tr>
+            <tr class="bg-slate-50"><td class="border p-2 font-semibold">2</td><td class="border p-2">My family values me</td><td class="border p-2">Belonging to family</td><td class="border p-2">Family drawings + sharing circle</td></tr>
+            <tr><td class="border p-2 font-semibold">3</td><td class="border p-2">Friends show care</td><td class="border p-2">Friendship & kindness</td><td class="border p-2">Role-play sharing and helping</td></tr>
+            <tr class="bg-slate-50"><td class="border p-2 font-semibold">4</td><td class="border p-2">How I can show love and kindness</td><td class="border p-2">Actions that show value</td><td class="border p-2">Kindness chart + toy sharing</td></tr>
+            <tr><td class="border p-2 font-semibold">5</td><td class="border p-2">We are all different and all special</td><td class="border p-2">Respect for diversity</td><td class="border p-2">Picture discussion</td></tr>
+            <tr class="bg-slate-50"><td class="border p-2 font-semibold">6</td><td class="border p-2">People who help me</td><td class="border p-2">Community & gratitude</td><td class="border p-2">Thank-you cards</td></tr>
+            <tr><td class="border p-2 font-semibold">7</td><td class="border p-2">Special times and celebrations</td><td class="border p-2">Festivals & sacred times</td><td class="border p-2">Story + simple celebration</td></tr>
+            <tr class="bg-slate-50"><td class="border p-2 font-semibold">8</td><td class="border p-2">Revision & Celebration</td><td class="border p-2">Consolidation</td><td class="border p-2">Class exhibition + songs</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Lesson Plans -->
+
+      <section class="page-break border border-slate-200 rounded-lg overflow-hidden">
+        <div class="bg-blue-900 text-white text-center py-2 font-bold">LESSON PLAN – Week 1</div>
+        <div class="p-4 space-y-3 text-sm">
+          <table class="w-full border border-slate-300 text-sm mb-3">
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold w-1/4">THEME / TOPIC</td><td class="p-1.5" colspan="3">Religious Identity · I am special and loved</td></tr>
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold">FOCUS</td><td class="p-1.5">Self-worth</td><td class="p-1.5 bg-slate-50 font-semibold">TIME</td><td class="p-1.5">40 minutes</td></tr>
+            <tr><td class="p-1.5 bg-slate-50 font-semibold">GRADE</td><td class="p-1.5" colspan="3">Pre-Primary / Grades 1–3</td></tr>
+          </table>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Specific Objectives – Learners should be able to:</h4>
+            <ol class="list-decimal list-inside space-y-0.5">
+              <li>Say one thing that makes them feel special or loved.</li><li>Identify one way someone shows them love (hug, help, kind words).</li><li>Demonstrate one kind action they can show to another person.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Teaching Aids</h4>
+            <p>Large mirror, pictures of happy children, chart paper, markers, soft toys, storybook about being special, heart stickers.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Short Introduction</h4>
+            <p>Gather learners in a circle. Say: 'Today we talk about something very special – YOU!' Hold up a large mirror for each child to see themselves and smile.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Presentation – Teacher Tasks & Learner Activities</h4>
+            <table class="w-full border border-slate-300 text-xs">
+              <thead><tr class="bg-slate-100"><th class="border p-1.5 text-left w-1/2">Teacher Tasks</th><th class="border p-1.5 text-left w-1/2">Learner Activities</th></tr></thead>
+              <tbody>
+                <tr><td class="border p-1.5 align-top">Show a smiling child picture and ask how they feel when someone hugs them or says they love them. Model a warm hug.</td><td class="border p-1.5 align-top">Look in the mirror and say one feeling word (happy, special, good). Practise the hug gesture.</td></tr><tr><td class="border p-1.5 align-top">Show a picture of a child being helped or sharing. Ask how it feels when someone helps them.</td><td class="border p-1.5 align-top">Share how hugs or kind words make them feel.</td></tr><tr><td class="border p-1.5 align-top">Using a soft toy, demonstrate showing care. Invite a few learners to try.</td><td class="border p-1.5 align-top">Suggest and demonstrate ways to show care (share, smile, help, hug).</td></tr><tr><td class="border p-1.5 align-top">Read a short simple story about a child who feels loved.</td><td class="border p-1.5 align-top">Listen and answer simple questions about the story.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Consolidation</h4>
+            <p>Draw a big heart on chart paper. Learners take turns drawing or saying one way they feel loved. Sing a song about being special.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Assessment / Homework</h4>
+            <p>Ask each learner: 'Tell me one way you are special and loved.' Homework: Draw yourself doing something kind for someone else.</p>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex justify-between border-t">
+            <span>Controlled by: ........................</span>
+            <span>Date: ........................</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break border border-slate-200 rounded-lg overflow-hidden">
+        <div class="bg-blue-900 text-white text-center py-2 font-bold">LESSON PLAN – Week 2</div>
+        <div class="p-4 space-y-3 text-sm">
+          <table class="w-full border border-slate-300 text-sm mb-3">
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold w-1/4">THEME / TOPIC</td><td class="p-1.5" colspan="3">Religious Identity · My family values me</td></tr>
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold">FOCUS</td><td class="p-1.5">Belonging to family</td><td class="p-1.5 bg-slate-50 font-semibold">TIME</td><td class="p-1.5">40 minutes</td></tr>
+            <tr><td class="p-1.5 bg-slate-50 font-semibold">GRADE</td><td class="p-1.5" colspan="3">Pre-Primary / Grades 1–3</td></tr>
+          </table>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Specific Objectives – Learners should be able to:</h4>
+            <ol class="list-decimal list-inside space-y-0.5">
+              <li>Name people in their family who care for them.</li><li>Describe one way their family shows they are valued.</li><li>Express gratitude for their family.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Teaching Aids</h4>
+            <p>Family picture cards, drawing paper, crayons, chart paper, markers, soft toys representing family members.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Short Introduction</h4>
+            <p>Show pictures of different families. Ask: 'Who lives with you at home? Who helps you every day?'</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Presentation – Teacher Tasks & Learner Activities</h4>
+            <table class="w-full border border-slate-300 text-xs">
+              <thead><tr class="bg-slate-100"><th class="border p-1.5 text-left w-1/2">Teacher Tasks</th><th class="border p-1.5 text-left w-1/2">Learner Activities</th></tr></thead>
+              <tbody>
+                <tr><td class="border p-1.5 align-top">Talk about different kinds of families and people who care for children.</td><td class="border p-1.5 align-top">Name family members and say who helps them.</td></tr><tr><td class="border p-1.5 align-top">Model saying 'My mother/father/grandmother helps me by…'</td><td class="border p-1.5 align-top">Draw their family and talk about the people in the picture.</td></tr><tr><td class="border p-1.5 align-top">Guide learners to draw their family.</td><td class="border p-1.5 align-top">Share one way their family shows care.</td></tr><tr><td class="border p-1.5 align-top">Help learners share one thing a family member does that shows love.</td><td class="border p-1.5 align-top">Practise saying 'Thank you' to family members.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Consolidation</h4>
+            <p>Create a class 'Our Families' chart. Learners stick their drawings and say one sentence about their family.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Assessment / Homework</h4>
+            <p>Ask: 'Who in your family makes you feel special?' Homework: Tell someone at home 'Thank you for loving me' and draw that person.</p>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex justify-between border-t">
+            <span>Controlled by: ........................</span>
+            <span>Date: ........................</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break border border-slate-200 rounded-lg overflow-hidden">
+        <div class="bg-blue-900 text-white text-center py-2 font-bold">LESSON PLAN – Week 3</div>
+        <div class="p-4 space-y-3 text-sm">
+          <table class="w-full border border-slate-300 text-sm mb-3">
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold w-1/4">THEME / TOPIC</td><td class="p-1.5" colspan="3">Religious Identity · Friends show care</td></tr>
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold">FOCUS</td><td class="p-1.5">Friendship & kindness</td><td class="p-1.5 bg-slate-50 font-semibold">TIME</td><td class="p-1.5">40 minutes</td></tr>
+            <tr><td class="p-1.5 bg-slate-50 font-semibold">GRADE</td><td class="p-1.5" colspan="3">Pre-Primary / Grades 1–3</td></tr>
+          </table>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Specific Objectives – Learners should be able to:</h4>
+            <ol class="list-decimal list-inside space-y-0.5">
+              <li>Identify actions that show a friend cares.</li><li>Demonstrate one friendly action (sharing, helping, smiling).</li><li>Explain why friends are important.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Teaching Aids</h4>
+            <p>Pictures of children playing together, soft toys, sharing objects (blocks, crayons), friendship song.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Short Introduction</h4>
+            <p>Sing a friendship song. Ask: 'What makes a good friend?'</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Presentation – Teacher Tasks & Learner Activities</h4>
+            <table class="w-full border border-slate-300 text-xs">
+              <thead><tr class="bg-slate-100"><th class="border p-1.5 text-left w-1/2">Teacher Tasks</th><th class="border p-1.5 text-left w-1/2">Learner Activities</th></tr></thead>
+              <tbody>
+                <tr><td class="border p-1.5 align-top">Show pictures of children sharing, helping and playing together.</td><td class="border p-1.5 align-top">Name ways friends show care.</td></tr><tr><td class="border p-1.5 align-top">Model good friendship actions with a soft toy.</td><td class="border p-1.5 align-top">Practise sharing and helping in pairs.</td></tr><tr><td class="border p-1.5 align-top">Organise a short pair activity where learners practise sharing.</td><td class="border p-1.5 align-top">Role-play being a good friend.</td></tr><tr><td class="border p-1.5 align-top">Praise kind actions observed during the activity.</td><td class="border p-1.5 align-top">Say one thing they like about a friend in the class.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Consolidation</h4>
+            <p>Make a simple 'Friendship Circle'. Learners hold hands and say one kind word to a friend.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Assessment / Homework</h4>
+            <p>Observe participation in sharing activity. Ask: 'How can you show a friend that you care?'</p>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex justify-between border-t">
+            <span>Controlled by: ........................</span>
+            <span>Date: ........................</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break border border-slate-200 rounded-lg overflow-hidden">
+        <div class="bg-blue-900 text-white text-center py-2 font-bold">LESSON PLAN – Week 4</div>
+        <div class="p-4 space-y-3 text-sm">
+          <table class="w-full border border-slate-300 text-sm mb-3">
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold w-1/4">THEME / TOPIC</td><td class="p-1.5" colspan="3">Religious Identity · How I can show love and kindness</td></tr>
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold">FOCUS</td><td class="p-1.5">Actions that show value</td><td class="p-1.5 bg-slate-50 font-semibold">TIME</td><td class="p-1.5">40 minutes</td></tr>
+            <tr><td class="p-1.5 bg-slate-50 font-semibold">GRADE</td><td class="p-1.5" colspan="3">Pre-Primary / Grades 1–3</td></tr>
+          </table>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Specific Objectives – Learners should be able to:</h4>
+            <ol class="list-decimal list-inside space-y-0.5">
+              <li>List at least two kind actions they can do.</li><li>Demonstrate one kind action in class.</li><li>Explain how kind actions make others feel.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Teaching Aids</h4>
+            <p>Kindness chart, heart stickers, soft toys, pictures of kind actions, markers.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Short Introduction</h4>
+            <p>Show the kindness chart. Ask: 'What kind things can we do for others today?'</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Presentation – Teacher Tasks & Learner Activities</h4>
+            <table class="w-full border border-slate-300 text-xs">
+              <thead><tr class="bg-slate-100"><th class="border p-1.5 text-left w-1/2">Teacher Tasks</th><th class="border p-1.5 text-left w-1/2">Learner Activities</th></tr></thead>
+              <tbody>
+                <tr><td class="border p-1.5 align-top">Brainstorm kind actions with the class (share, help, smile, say kind words).</td><td class="border p-1.5 align-top">Suggest kind actions.</td></tr><tr><td class="border p-1.5 align-top">Model each action clearly.</td><td class="border p-1.5 align-top">Practise kind actions with peers or toys.</td></tr><tr><td class="border p-1.5 align-top">Set up a simple activity where learners practise one kind action.</td><td class="border p-1.5 align-top">Receive and give heart stickers for kind behaviour.</td></tr><tr><td class="border p-1.5 align-top">Add hearts to the kindness chart when kind actions are shown.</td><td class="border p-1.5 align-top">Talk about how it feels to receive kindness.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Consolidation</h4>
+            <p>Review the kindness chart together. Celebrate all the kind actions done in the lesson.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Assessment / Homework</h4>
+            <p>Ask each learner to show or tell one kind action. Homework: Do one kind thing at home and draw it.</p>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex justify-between border-t">
+            <span>Controlled by: ........................</span>
+            <span>Date: ........................</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break border border-slate-200 rounded-lg overflow-hidden">
+        <div class="bg-blue-900 text-white text-center py-2 font-bold">LESSON PLAN – Week 5</div>
+        <div class="p-4 space-y-3 text-sm">
+          <table class="w-full border border-slate-300 text-sm mb-3">
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold w-1/4">THEME / TOPIC</td><td class="p-1.5" colspan="3">Religious Identity · We are all different and all special</td></tr>
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold">FOCUS</td><td class="p-1.5">Respect for diversity</td><td class="p-1.5 bg-slate-50 font-semibold">TIME</td><td class="p-1.5">40 minutes</td></tr>
+            <tr><td class="p-1.5 bg-slate-50 font-semibold">GRADE</td><td class="p-1.5" colspan="3">Pre-Primary / Grades 1–3</td></tr>
+          </table>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Specific Objectives – Learners should be able to:</h4>
+            <ol class="list-decimal list-inside space-y-0.5">
+              <li>Notice and name differences and similarities among classmates.</li><li>State that every person is special.</li><li>Show respect when talking about differences.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Teaching Aids</h4>
+            <p>Pictures of diverse children (different skin tones, hair, abilities), mirrors, drawing paper, crayons.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Short Introduction</h4>
+            <p>Look at pictures of many different children. Say: 'We look different but we are all special.'</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Presentation – Teacher Tasks & Learner Activities</h4>
+            <table class="w-full border border-slate-300 text-xs">
+              <thead><tr class="bg-slate-100"><th class="border p-1.5 text-left w-1/2">Teacher Tasks</th><th class="border p-1.5 text-left w-1/2">Learner Activities</th></tr></thead>
+              <tbody>
+                <tr><td class="border p-1.5 align-top">Guide a gentle discussion about how we are the same and different.</td><td class="border p-1.5 align-top">Talk about what makes them unique.</td></tr><tr><td class="border p-1.5 align-top">Emphasise that different is good and every child is valuable.</td><td class="border p-1.5 align-top">Draw themselves and a friend, noticing similarities and differences.</td></tr><tr><td class="border p-1.5 align-top">Help learners draw themselves and a friend.</td><td class="border p-1.5 align-top">Practise saying 'You are special' to a classmate.</td></tr><tr><td class="border p-1.5 align-top">Model respectful language about differences.</td><td class="border p-1.5 align-top">Celebrate each other's drawings.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Consolidation</h4>
+            <p>Create a class collage or gallery titled 'We Are All Special'.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Assessment / Homework</h4>
+            <p>Ask: 'Are we all the same? Are we all special?' Observe respectful language.</p>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex justify-between border-t">
+            <span>Controlled by: ........................</span>
+            <span>Date: ........................</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break border border-slate-200 rounded-lg overflow-hidden">
+        <div class="bg-blue-900 text-white text-center py-2 font-bold">LESSON PLAN – Week 6</div>
+        <div class="p-4 space-y-3 text-sm">
+          <table class="w-full border border-slate-300 text-sm mb-3">
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold w-1/4">THEME / TOPIC</td><td class="p-1.5" colspan="3">Religious Identity · People who help me</td></tr>
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold">FOCUS</td><td class="p-1.5">Community & gratitude</td><td class="p-1.5 bg-slate-50 font-semibold">TIME</td><td class="p-1.5">40 minutes</td></tr>
+            <tr><td class="p-1.5 bg-slate-50 font-semibold">GRADE</td><td class="p-1.5" colspan="3">Pre-Primary / Grades 1–3</td></tr>
+          </table>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Specific Objectives – Learners should be able to:</h4>
+            <ol class="list-decimal list-inside space-y-0.5">
+              <li>Identify people in the community who help them (teachers, nurses, police, etc.).</li><li>Express thanks to someone who helps them.</li><li>Recognise that many people care for children.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Teaching Aids</h4>
+            <p>Pictures of community helpers, paper for thank-you cards, crayons, stickers.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Short Introduction</h4>
+            <p>Show pictures of community helpers. Ask: 'Who helps us at school? Who helps when we are sick?'</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Presentation – Teacher Tasks & Learner Activities</h4>
+            <table class="w-full border border-slate-300 text-xs">
+              <thead><tr class="bg-slate-100"><th class="border p-1.5 text-left w-1/2">Teacher Tasks</th><th class="border p-1.5 text-left w-1/2">Learner Activities</th></tr></thead>
+              <tbody>
+                <tr><td class="border p-1.5 align-top">Name common community helpers and what they do.</td><td class="border p-1.5 align-top">Name people who help them.</td></tr><tr><td class="border p-1.5 align-top">Link back to family helpers from Week 2.</td><td class="border p-1.5 align-top">Make a thank-you card for a helper (teacher, family member or community worker).</td></tr><tr><td class="border p-1.5 align-top">Guide learners to make a simple thank-you card.</td><td class="border p-1.5 align-top">Practise saying thank you.</td></tr><tr><td class="border p-1.5 align-top">Practise saying 'Thank you for helping me'.</td><td class="border p-1.5 align-top">Share who they will give their card to.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Consolidation</h4>
+            <p>Learners show their cards and say who they are thanking.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Assessment / Homework</h4>
+            <p>Observe card-making and oral thank-you practice. Homework: Give the card to someone and tell the class about it tomorrow.</p>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex justify-between border-t">
+            <span>Controlled by: ........................</span>
+            <span>Date: ........................</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break border border-slate-200 rounded-lg overflow-hidden">
+        <div class="bg-blue-900 text-white text-center py-2 font-bold">LESSON PLAN – Week 7</div>
+        <div class="p-4 space-y-3 text-sm">
+          <table class="w-full border border-slate-300 text-sm mb-3">
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold w-1/4">THEME / TOPIC</td><td class="p-1.5" colspan="3">Religious Identity · Special times and celebrations</td></tr>
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold">FOCUS</td><td class="p-1.5">Festivals & sacred times</td><td class="p-1.5 bg-slate-50 font-semibold">TIME</td><td class="p-1.5">40 minutes</td></tr>
+            <tr><td class="p-1.5 bg-slate-50 font-semibold">GRADE</td><td class="p-1.5" colspan="3">Pre-Primary / Grades 1–3</td></tr>
+          </table>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Specific Objectives – Learners should be able to:</h4>
+            <ol class="list-decimal list-inside space-y-0.5">
+              <li>Name one special time or celebration they know.</li><li>Describe how people feel during celebrations.</li><li>Participate respectfully in a simple celebration activity.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Teaching Aids</h4>
+            <p>Pictures of celebrations (Christmas, birthdays, cultural festivals), simple decorations, song, story about a celebration.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Short Introduction</h4>
+            <p>Show celebration pictures. Ask: 'What special days do you celebrate at home?'</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Presentation – Teacher Tasks & Learner Activities</h4>
+            <table class="w-full border border-slate-300 text-xs">
+              <thead><tr class="bg-slate-100"><th class="border p-1.5 text-left w-1/2">Teacher Tasks</th><th class="border p-1.5 text-left w-1/2">Learner Activities</th></tr></thead>
+              <tbody>
+                <tr><td class="border p-1.5 align-top">Talk about different celebrations in a respectful and inclusive way.</td><td class="border p-1.5 align-top">Share one celebration they know.</td></tr><tr><td class="border p-1.5 align-top">Read a short story about a special day.</td><td class="border p-1.5 align-top">Listen to the story and answer simple questions.</td></tr><tr><td class="border p-1.5 align-top">Lead a simple, joyful class celebration activity (song + movement).</td><td class="border p-1.5 align-top">Join in the song and movement activity.</td></tr><tr><td class="border p-1.5 align-top">Emphasise that special times help us feel happy and connected.</td><td class="border p-1.5 align-top">Draw a picture of a special day.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Consolidation</h4>
+            <p>Display drawings and sing one more celebration song together.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Assessment / Homework</h4>
+            <p>Ask: 'What makes a day special?' Observe participation and respect.</p>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex justify-between border-t">
+            <span>Controlled by: ........................</span>
+            <span>Date: ........................</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break border border-slate-200 rounded-lg overflow-hidden">
+        <div class="bg-blue-900 text-white text-center py-2 font-bold">LESSON PLAN – Week 8</div>
+        <div class="p-4 space-y-3 text-sm">
+          <table class="w-full border border-slate-300 text-sm mb-3">
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold w-1/4">THEME / TOPIC</td><td class="p-1.5" colspan="3">Religious Identity · Revision & Celebration</td></tr>
+            <tr class="border-b"><td class="p-1.5 bg-slate-50 font-semibold">FOCUS</td><td class="p-1.5">Consolidation</td><td class="p-1.5 bg-slate-50 font-semibold">TIME</td><td class="p-1.5">40 minutes</td></tr>
+            <tr><td class="p-1.5 bg-slate-50 font-semibold">GRADE</td><td class="p-1.5" colspan="3">Pre-Primary / Grades 1–3</td></tr>
+          </table>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Specific Objectives – Learners should be able to:</h4>
+            <ol class="list-decimal list-inside space-y-0.5">
+              <li>Recall key ideas from the theme (I am special, family, friends, kindness, helpers).</li><li>Share one favourite learning from the theme.</li><li>Celebrate their growth with the class.</li>
+            </ol>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Teaching Aids</h4>
+            <p>All previous charts and drawings, stickers, certificates or simple awards, songs from previous weeks.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Short Introduction</h4>
+            <p>Welcome learners to the celebration day. Review the journey of the theme briefly.</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Presentation – Teacher Tasks & Learner Activities</h4>
+            <table class="w-full border border-slate-300 text-xs">
+              <thead><tr class="bg-slate-100"><th class="border p-1.5 text-left w-1/2">Teacher Tasks</th><th class="border p-1.5 text-left w-1/2">Learner Activities</th></tr></thead>
+              <tbody>
+                <tr><td class="border p-1.5 align-top">Guide a short oral review of the main ideas.</td><td class="border p-1.5 align-top">Recall and share what they remember.</td></tr><tr><td class="border p-1.5 align-top">Invite learners to share their favourite drawing or memory from the theme.</td><td class="border p-1.5 align-top">Show their favourite work.</td></tr><tr><td class="border p-1.5 align-top">Lead favourite songs from the previous weeks.</td><td class="border p-1.5 align-top">Sing and celebrate together.</td></tr><tr><td class="border p-1.5 align-top">Present simple recognition (sticker or certificate) to every learner.</td><td class="border p-1.5 align-top">Receive recognition and clap for classmates.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Consolidation</h4>
+            <p>Class photo or group cheer: 'We are all special!'</p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-blue-900 text-xs uppercase tracking-wide border-b pb-1 mb-1">Assessment / Homework</h4>
+            <p>Observe confidence and ability to recall key ideas. Note learners who still need support with self-worth language.</p>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex justify-between border-t">
+            <span>Controlled by: ........................</span>
+            <span>Date: ........................</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Songs & Resources -->
+      <section class="page-break">
+        <h2 class="text-xl font-bold text-blue-900 border-b-2 border-blue-200 pb-2 mb-4">Songs, Stories & Classroom Tips</h2>
+        
+        <h3 class="font-semibold text-blue-800 mt-4 mb-2">Recommended Songs</h3>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>“Jesus Loves Me” or secular version “I Am Special”</li>
+          <li>“If You’re Happy and You Know It”</li>
+          <li>“You Are My Sunshine” (simple version)</li>
+          <li>Local Namibian children’s songs about family and kindness</li>
+        </ul>
+
+        <h3 class="font-semibold text-blue-800 mt-4 mb-2">Story Ideas</h3>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Simple picture books about a child who feels loved by family</li>
+          <li>Stories of sharing and helping friends</li>
+          <li>Teacher-created oral stories using learners’ names</li>
+        </ul>
+
+        <h3 class="font-semibold text-blue-800 mt-4 mb-2">Practical Classroom Tips (NIED aligned)</h3>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Always start from the child’s own home experience</li>
+          <li>Keep language simple and use lots of pictures and actions</li>
+          <li>Be inclusive and respectful of different family and religious backgrounds</li>
+          <li>Focus on values and feelings more than doctrine at this age</li>
+          <li>Praise every attempt – building self-worth is the main goal</li>
+        </ul>
+      </section>
+
+      <div class="text-center text-xs text-slate-400 pt-6 border-t">
+        Generated for Namibian teachers · NIED Religious and Moral Education · EduMate Namibia
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto mt-4 text-center no-print">
+    <button onclick="window.print()" class="bg-blue-700 hover:bg-blue-800 text-white font-medium px-6 py-2.5 rounded-lg">
+      Print / Save as PDF
+    </button>
+  </div>
+</body>
+</html>
